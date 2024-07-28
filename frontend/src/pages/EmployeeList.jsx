@@ -21,7 +21,7 @@ const EmployeeList = () => {
   const handleSearchChange = (e) => {
     setSearchField(e.target.value);
   };
-  console.log(data);
+  // console.log(data[2].pic);
   // Handle sorting option change
   const handleSortChange = (e) => {
     setSortBy(e.target.value);
@@ -174,12 +174,12 @@ const EmployeeList = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <img
-                          src={user.pic}
-                          // src={
-                          //   user.pic == null
-                          //     ? "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-                          //     : user.pic
-                          // }
+                          // src={user.pic}
+                          src={
+                            user.pic == ''
+                              ? "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+                              : user.pic
+                          }
                           // alt={user.name}
                           className="w-12 h-12 rounded-full"
                         />

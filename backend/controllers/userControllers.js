@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("../Model/userModel");
+const User = require("../model/userModel");
 const accessToken = (user) => {
   return jwt.sign(
     {
@@ -18,7 +18,9 @@ const registerUser = asyncHandler(async (req, res) => {
   const { userName, password } = req.body;
   const userExists = await User.findOne({ userName });
   if (userExists) {
-    return res.status(400).json({ Status: "INVALID", message: "User already exists" });
+    return res
+      .status(400)
+      .json({ Status: "INVALID", message: "User already exists" });
   }
   bcrypt
     .hash(password, 10)
@@ -68,7 +70,7 @@ const authUser = asyncHandler(async (req, res) => {
                 message: "success",
                 data: {
                   _id: user._id,
-                  name: user.userName,                  
+                  name: user.userName,
                   token: token,
                 },
               });
