@@ -35,6 +35,7 @@ const createEmployee = asyncHandler(async (req, res) => {
       designation,
       gender,
       course,
+      pic,
     });
     const createdNote = await note.save();
     res.status(200).json({ Status: "SUCCESS", message: "super", createdNote });

@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { addUsers } from "../../redux/bazarSlice";
 import Loading from "../components/Loading";
+import { BASE_URL } from "../../config";
 export const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -49,7 +50,7 @@ export const Login = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/users/",
+        `${BASE_URL}/api/users`,
         {
           userName,
           password,

@@ -167,7 +167,7 @@ const EmployeeCreate = () => {
                   className="form-radio text-black"
                   required
                 />
-                <span className="ml-2">Male</span>2
+                <span className="ml-2">Male</span>
               </label>
               <label className="inline-flex items-center">
                 <input

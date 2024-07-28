@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
+import { BASE_URL } from "../../config";
 const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -22,9 +23,12 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (formData.password !== formData.confirmPassword) {
       // toast.error("eero");
       console.log("error");
+      setLoading(false);
+
       toast.error("password did't match");
       return;
     }
@@ -35,7 +39,9 @@ const Register = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/users/register",
+        // "http://localhost:5000/api/users/register",
+        `${BASE_URL}/api/users/register`,
+
         {
           userName: formData.username, // Ensure formData.name is defined
           password: formData.password, // Ensure formData.password is defined
@@ -44,16 +50,14 @@ const Register = () => {
       );
       setLoading(false);
       console.log(data);
-      navigate("/");
+      navigate("/login");
 
       // toast.success("sucess");
     } catch (err) {
       setLoading(false);
       console.log("error");
-      // toast.success("sucess");
       console.log(err.response);
     }
-    console.log("Form submitted:", formData);
   };
   return (
     <div className="flex  items-center justify-center min-h-screen bg-black">
