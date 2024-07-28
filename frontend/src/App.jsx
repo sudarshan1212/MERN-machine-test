@@ -13,7 +13,10 @@ function App() {
       <Header />
       <main>
         <Routes>
-          {/* <Route path="/" element={<Login />} /> */}
+          <Route
+            path="/"
+            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />}
+          />
           <Route
             path="/login"
             element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />}
